@@ -1,0 +1,37 @@
+<% include ./partials/header %>
+
+    <!-- HELP DATA
+
+    customersNo: Number,
+    customerName:String,
+    customerAdd:String,
+    customerPhone:String,
+    created:{type:Date,default:Date.now},
+-->
+    <div class="container">
+
+        <div class="table-center">
+            <table>
+                <form action="/order/" method="post">
+                    <%data.forEach(function(data){%>
+                        <tr>
+                            <td>
+                                <input type="text" name="data[productInfo.product]" value="<%=data.productName%>">
+                            </td>
+                            <td>
+                                <input type="text" name="data[orderQty]" placeholder="Q">
+                            </td>
+                        </tr>
+                        <%});%>
+
+                            <input type="text" name="data[customerPhone]" placeholder="تلفن مشتری">
+                            <input type="submit">
+                </form>
+            </table>
+
+            <form class="formshow" action="/customer">
+                <button>home</button>
+            </form>
+        </div>
+    </div>
+    <% include ./partials/footer %>

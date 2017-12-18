@@ -1,0 +1,38 @@
+    <nav class="navbar navbar-default">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+            <a class="navbar-brand" href="#"><img src="/logo.png" style="max-height:30px"></a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/product">  محصولات <span class="sr-only">(current)</span></a></li>
+                <li><a href="aboutus">درباره ما</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <%if(currentuser){%>
+                        <a href="/customer/<%=currentuser._id%>/edit" id='userInfo'>
+                            <%=currentuser.username%>
+                        </a>
+                    <%}%>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <%if(!currentuser){%>
+                    <li><a href="/login">ورود</a></li>
+                    <li><a href="/register">ثبت نام</a></li>
+                    <%}else{%>
+                        <li><a href="/logout">خروج</a></li>
+                        <%}%>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+        <!-- /.container-fluid -->
+    </nav>

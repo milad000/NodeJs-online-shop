@@ -1,0 +1,96 @@
+@font-face {
+    font-family: "iransans";
+    font-weight: "normal";
+    src: url("./fonts/IRANSansWeb.eot");
+    src: url("./fonts/IRANSansWeb.eot?#iefix") format("embedded-opentype"),
+    url("./fonts/IRANSansWeb.woff") format("woff"),
+    url("./fonts/IRANSansWeb.ttf") format("truetype")
+}
+
+@font-face {
+    font-family: "iransans-bold";
+    font-weight: "bold";
+    src: url("./fonts/IRANSansWeb_Bold.eot");
+    src: url("./fonts/IRANSansWeb_Bold.eot?#iefix") format("embedded-opentype"),
+    url("./fonts/IRANSansWeb_Bold.woff") format("woff"),
+    url("./fonts/IRANSansWeb_Bold.ttf")
+}
+@font-face {
+    font-family: "iransans";
+    font-weight: "bold";
+    src: url("./fonts/IRANSansWeb(FaNum).eot");
+    src: url("./fonts/IRANSansWeb(FaNum).eot?#iefix") format("embedded-opentype"),
+    url("./fonts/IRANSansWeb(FaNum).woff") format("woff"),
+    url("./fonts/IRANSansWeb(FaNum).ttf")
+}
+body{
+    max-width: 100%
+}
+.caption h3.title{
+    font-family: "iransans-bold";
+            min-height: 75px;
+    
+}
+.caption p.price{
+    font-family: "iransans";
+    min-height: 35px;
+    font-size: 23px;
+    border: 1px solid #4c0424;
+    border-radius: 4px;
+    text-align: center;
+    background: #a11d58;
+    color: #fff;   
+}
+.caption p.price span{
+font-size: 10px;
+    margin-right: 5px;
+}
+.thumbnail img{
+    width: 50%;
+}
+.well {
+    min-height: 240px !important;
+}
+.date-btn{
+    float: right;
+}
+
+button.btn.btn-success.btn-sm {
+    width: 47%;
+}
+
+input.form-group {
+  min-width: 414px;
+}
+.orderTbody tr:first-child{
+    display: none;
+}
+@media (max-width: 768px) {
+.caption h3.title{
+    font-family: "iransans-bold";
+    min-height: 45px;
+    font-size: 22px;
+    
+}
+.caption p.price{
+    font-family: "iransans";
+    min-height: 28px;
+    font-size: 15px;
+    border: 1px solid #4c0424;
+    border-radius: 4px;
+    text-align: center;
+    background: #a11d58;
+    color: #fff;   
+}
+.caption p.price span{
+    font-size: 15px;
+    margin-right: 5px;
+}
+.thumbnail img{
+    width: 100%;
+}
+.well {
+    min-height: 210px !important;
+}
+}
+

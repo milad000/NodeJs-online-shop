@@ -1,0 +1,225 @@
+<% include ./partials/header %>
+
+    <nav class="navbar navbar-default">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+            <a class="navbar-brand" href="#"><img src="/logo.png" style="max-height:30px"></a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/product">  محصولات <span class="sr-only">(current)</span></a></li>
+                <li><a href="/aboutus">درباره ما</a></li>
+                <li>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="/customer/<%=currentuser._id%>/edit" id='userInfo'>
+                        <%if(currentuser){%>
+                            <%=currentuser.username%>
+                                <%}%>
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <%if(!currentuser){%>
+                    <li><a href="/login">ورود</a></li>
+                    <li><a href="/register">ثبت نام</a></li>
+                    <%}else{%>
+                        <li><a href="/logout">خروج</a></li>
+                        <%}%>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+        <!-- /.container-fluid -->
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="table-responsive">
+                <div class="col-xs-12">
+                    <form action="/myinvoice" method="post">
+                        <table class="table" style="width:100%; height: 100px;">
+                            <tbody>
+                                <tr class="bg-warning text-center">
+                                    <td colspan="3">مشخصات فاکتور</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    </td>
+                                    <td style="vertical-align:middle">آدرس ارسال سفارش</td>
+                                    <td style="vertical-align:middle"><input style="width:100%; border:none; background-color:transparent" type="text" name="orderAdd" placeholder="آدرس ارسال سفارش ..."></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    </td>
+                                    <td style="vertical-align:middle">تاریخ ارسال سفارش</td>
+                                    <td style="vertical-align:middle">
+                                    <input name="date" type="text" onclick="PersianDatePicker.Show(this,'1396/06/02');" placeholder="تاریخ ارسال سفارش ..." style="width:100%; border:none;"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="table" style="width:100%; height: 100px;">
+                            <tbody>
+                                <tr class="bg-success text-center">
+                                    <td colspan="3">مشخصات مشتری</td>
+                                </tr>
+                                <tr>
+                                    <td>
+
+                                    </td>
+                                    <td style="vertical-align:middle">نام مشتری</td>
+                                    <td style="vertical-align:middle"><input style="width:100%; border:none; background-color:transparent" value="<%=currentuser.customerName%>" type="text" name="customerName"></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    </td>
+                                    <td style="vertical-align:middle">آدرس مشتری</td>
+                                    <td style="vertical-align:middle"><input style="width:100%; border:none; background-color:transparent" value="<%=currentuser.customerAdd%>" type="text" name="customerAdd"></td>
+                                </tr>
+                                <tr>
+                                    <td>
+
+                                    </td>
+                                    <td style="vertical-align:middle">تلفن مشتری</td>
+                                    <td style="vertical-align:middle">
+                                        <%if(currentuser){%><input style="width:100%; border:none; background-color:transparent" type="text" name="customerPhone" value="<%=currentuser.username%>">
+                                            <%}%>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="table table-striped text-center" id="myTablePaging">
+                            <tr>
+                                <th class="bg-danger text-center Amiri" style="vertical-align:middle"></th>
+                                <th class="bg-danger text-right Amiri" style="max-width:30px; vertical-align:middle">نام کالا</th>
+                                <th class="bg-danger text-center Amiri" style="vertical-align:middle">قیمت</th>
+                                <th class="bg-danger text-center Amiri" style="vertical-align:middle; font-size:0.8em">
+                                    تعداد
+                                </th>
+                                <th class="bg-danger text-center Amiri" colspan="3" style="vertical-align:middle">جمع قیمت</th>
+                            </tr>
+                            <tbody class="">
+                                <!--ISSUES WITH REMOVE REPEATED DATA AND ADD A NUMBER AS COUNTER TO COUNT HOW MANY TIMES IT REPEATED!...-->
+                                <%if(data){%>
+                                    <%data.productInfo.sort()%>
+                                        <%}%>
+                                            <%if(data.productInfo){%>
+                                                <%var productInfo= data.productInfo%>
+                                                    <%}%>
+                                                        <%var counter=0%>
+                                                            <% var total=0%>
+                                                                <%for(var i=(productInfo.length);i>=0;i--){%>
+                                                                    <%if(data.productInfo[i]!==data.productInfo[i-1]){%>
+                                                                        <tr>
+                                                                            <%if(data.productInfo[i]){%>
+                                                                                <%counter++%>
+                                                                                    <td style="width:27px; padding-right:0; padding-left:0">
+                                                                                        <input style="border:none; background-color:transparent; width:100%; text-align:right" name="counter<%=counter%>" type="text" value="<%=counter%>" readonly>
+                                                                                    </td>
+                                                                                    <td style="width:150px; padding-right:0; padding-left:0"><input style="border:none; background-color:transparent; width:100%; text-align:right" name="productName<%=counter%>" type="text" value="<%=data.productInfo[i].productName%>" readonly>
+
+                                                                                    </td>
+                                                                                    <td style="width:20px; padding-right:0; padding-left:0"><input style="border:none; background-color:transparent; width:100%; text-align:center" name="productPrice<%=counter%>" type="text" value="<%=data.productInfo[i].productPrice%>" readonly>
+                                                                                    </td>
+                                                                                    <td style="width:4px; display:none"><input style="border:none; background-color:transparent; width:100%; text-align:right" name="productDes<%=counter%>" type="text" value="<%=data.productInfo[i].productDes%>" readonly>
+
+                                                                                    </td>
+                                                                                    <td style="width:4px;padding-right:0; padding-left:0"><input style="border:none; background-color:transparent; width:70%; text-align:center" name="amount<%=counter%>" type="text" value="<%=amount%>" readonly>
+
+                                                                                    </td>
+                                                                                    <td style="width:90px;padding-right:0; padding-left:0">
+                                                                                        <%var sub= (data.productInfo[i].productPrice)*amount*(data.productInfo[i].productDes)%><input style="border:none; background-color:transparent; width:100%; text-align:center" name="subPrice<%=counter%>" type="text" value="<%=sub%>" readonly>
+                                                                                            <%total=total+sub%>
+                                                                                    </td>
+                                                                                    <%}%>
+                                                                        </tr>
+                                                                        <%var amount=1%>
+                                                                            <%}else{%>
+                                                                                <%amount++%>
+                                                                                    <%}%>
+                                                                                        <%};%>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td class="bg-primary" style="text-align:left;" colspan="3">جمع کل :</td>
+                                    <td class="bg-primary" colspan="3">
+                                        <span style="float:left">ریال</span><input style="border:none; background-color:transparent; width:70%; text-align:left" type="text" name="total" value="<%=total%>">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="bg-primary" style="text-align:left" colspan="3">ارزش افزوده :</td>
+                                    <td class="bg-primary" colspan="3">
+                                        <span style="float:left">ریال</span><input style="border:none; background-color:transparent; width:70%; text-align:left" type="text" name="vat" value="<%=Math.round((total*0.09)/1000)*1000%>">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="bg-primary" style="text-align:left" colspan="3">خالص پرداختی :</td>
+                                    <td class="bg-primary" colspan="3">
+                                        <span style="float:left">ریال</span><input style="border:none; background-color:transparent; width:70%; text-align:left" type="text" name="toPay" value="<%=total+(Math.ceil((total*0.09)/1000)*1000)%>">
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <table class="table" style="width:100%; height: 100px;">
+                            <tbody>
+                                <tr class="bg-info text-center">
+                                    <td colspan="3">نحوه پرداخت</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="radio text-center">
+                                            <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked></label>
+                                        </div>
+                                    </td>
+                                    <td style="vertical-align:middle">درخواست کارتخوان</td>
+                                    <td style="vertical-align:middle"><i class="fa fa-credit-card"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="radio text-center">
+                                            <label><input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" disabled></label>
+                                        </div>
+                                    </td>
+                                    <td style="vertical-align:middle">پرداخت آنلاین (به زودی...)</td>
+                                    <td style="vertical-align:middle"><i class="fa fa-globe" aria-hidden="true"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="radio text-center">
+                                            <label><input type="radio" name="optionsRadios" id="optionsRadios3" value="option3"></label>
+                                        </div>
+                                    </td>
+                                    <td style="vertical-align:middle">به صورت نقدی</td>
+                                    <td style="vertical-align:middle"><i class="fa fa-money" aria-hidden="true"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div>
+                            <a class="btn btn-warning" href="/myorder">تغییر</a>
+                            <%if(total+(Math.ceil((total*0.09)/1000)*1000)){%>
+                                <button class="btn btn-success"> تایید نهایی و پرداخت</button>
+                                <%}%>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <div style="position:relative;width:100%; bottom:0; background-color:black; height:200px; text-align:center">
+        <h5 style="padding-top:20px"> سیستم فروش آنلان شرکت تندیس برای مدتی به صورت آزمایشی فعال شده</h5>
+        <h6>لطفا مشکلات احتمالی را به ایمیل info@tandis.com ارسال نمایید با تشکر.</h6>
+    </div>
+
+
+
+    <% include ./partials/footer %>

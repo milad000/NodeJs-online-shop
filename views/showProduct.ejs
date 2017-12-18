@@ -1,0 +1,86 @@
+<% include ./partials/header %>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+                <a class="navbar-brand" href="#"><img src="/logo.png" style="height:25px"></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">محصولات <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#">درباره ما</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/authenticate">ورود</a></li>
+                    <li><a href="/authenticate/new">ثبت نام</a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr class="bg-primary">
+                            <td>شماره کالا</td>
+                            <td>نام کالا</td>
+                            <td>توضیحات</td>
+                            <td>قیمت کالا</td>
+                            <td></td>
+                        </tr>
+                    </thead>
+
+                    <!-- HELP DATA
+    productNo: Number,
+    productName: String,
+    productDes:String,
+    productPrice:Number,
+-->
+
+                    <tbody>
+                        <tr>
+
+                            <td>
+                                <%=data.productNo%>
+                            </td>
+                            <td>
+                                <%=data.productName%>
+                            </td>
+                            <td>
+                                <%=data.productDes%>
+                            </td>
+                            <td>
+                                <%=data.productPrice%>
+                            </td>
+                            <td>
+                               <img src="/<%=data.productImg%>" style="max-height:30px">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <form action="/product/<%=data._id%>?_method=DELETE" method="POST" style="float:right">
+                    <button class="btn btn-default">حذف</button>
+                </form>
+                <form action="/product/<%=data._id%>/edit" style="float:right">
+                    <button class="btn btn-default">تغییر</button>
+                </form>
+                <form action="/product/<%=data._id%>/new" style="float:right">
+                    <button class="btn btn-default">جدید</button>
+                </form>
+                <form action="/product">
+                    <button class="btn btn-default"><i class="fa fa-reply-all" aria-hidden="true"></i></button>
+                </form>
+            </div>
+        </div>
+        <% include ./partials/footer %>

@@ -1,0 +1,85 @@
+<% include ./partials/header %>
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+                <a class="navbar-brand" href="#"><img src="/logo.png" style="height:25px"></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/product">محصولات <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#">درباره ما</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/login">ورود</a></li>
+                    <li><a href="/register">ثبت نام</a></li>
+                    <li><a href="/logout">خروج</a></li>
+
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="table-responsive">
+
+                <div class="col-xs-12">
+                    <table class="table table-striped Sche" id="myTablePaging">
+                        <tr>
+                            <th class="bg-danger text-center Amiri"></th>
+                            <th class="bg-danger text-center Amiri">تاریخ فاکتور</th>
+                            <th class="bg-danger text-center Amiri">شماره فاکتور</th>
+                            <th class="bg-danger text-center Amiri">شماره مشتری</th>
+                            <th class="bg-danger text-center Amiri">نام مشتری</th>
+                            <th class="bg-danger text-center Amiri">تسویه</th>
+                        </tr>
+                        <tbody>
+                            <%data.forEach(function(data){%>
+
+                                <tr>
+                                    <td><a href="/showorder/<%=data._id%>"><i class="fa fa-check-circle" aria-hidden="true"></i></a></td>
+                                    <td class="persianumber">
+                                        <%=data%>
+                                    </td>
+                                    <td>
+                                        <form style="float:right" action="/order/<%=data._id%>?_method=DELETE" method="POST">
+                                            <button class="btn btn-default">حذف</button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <%=data._id%>
+                                    </td>
+                                    <td class="persianumber">
+                                    </td>
+                                    <td>
+                                    </td>
+                                </tr>
+                                <%});%>
+
+
+                                    <tbody>
+ 
+                                    </tbody>
+                    </table>
+                    <hr>
+
+                </div>
+            </div>
+        </div>
+        <a href="/invoice/new" class="form-control btn btn-success" style="margin-bottom:5px;" role="button">جدید</a>
+        <a href="/customer" class="form-control btn btn-info" style="margin-bottom:5px;" role="button">مشتریان</a>
+        <a href="/product" class="form-control btn btn-primary" style="margin-bottom:5px;" role="button">کالاها</a>
+        <hr>
+    </div>
+    <% include ./partials/footer %>

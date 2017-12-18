@@ -1,0 +1,102 @@
+<% include ./partials/header %>
+    <% include ./partials/navbar1 %>
+        <div class="container">
+            <div class="row">
+                <div class="table-responsive">
+                    <div class="col-xs-12">
+                        <div style="padding:10px;" id="pdate1" name="date"></div>
+                        <table class="table table-striped text-center" id="myTablePaging">
+                            <tr>
+                                <th class="bg-danger text-center Amiri"></th>
+                                <th class="bg-danger text-center Amiri" style="max-width:30px">کد کالا</th>
+                                <th class="bg-danger text-center Amiri">نام کالا</th>
+                                <th class="bg-danger text-center Amiri" colspan="3">تعداد کالا</th>
+                            </tr>
+                            <tbody class="orderTbody">
+                                <!--ISSUES WITH REMOVE REPEATED DATA AND ADD A NUMBER AS COUNTER TO COUNT HOW MANY TIMES IT REPEATED!...-->
+                                <%if(data[0]){%>
+                                    <%data[0].productInfo.sort()%>
+                                        <%}%>
+                                            <%data.forEach(function(data){%>
+                                                <%var productInfo= data.productInfo%>
+                                                    <%var counter=0;%>
+                                                        <%for(var i=(productInfo.length);i>=0;i--){%>
+                                                            <%if(data.productInfo[i]!==data.productInfo[i-1]){%>
+                                                                <%counter++;%>
+                                                                    <tr>
+                                                                        <td style="width:20px; padding-right:0; padding-left:0">
+                                                                            <%if(counter-1!==0){%>
+                                                                                <%=counter-1%>
+                                                                                    <%}%>
+                                                                        </td>
+                                                                        <td style="width:20px; padding-right:0; padding-left:0">
+                                                                            <%if(counter-1!==0){%>
+                                                                                <input type="text" name="productNo<%=counter-2%>" style="background-color:transparent; border:none; width:43px;float:right" value="<%if(data.productInfo[i]){%><%=data.productInfo[i].productNo%><%}%>" readonly>
+                                                                                <%}%>
+                                                                        </td>
+
+                                                                        <td style="width:20px; padding-right:0; padding-left:0">
+                                                                            <%if(counter-1!==0){%>
+                                                                                <input type="text" style="background-color:transparent; border:none; width:94px" value="<%if(data.productInfo[i]){%><%=data.productInfo[i].productName%><%}%>" readonly>
+                                                                                <%}%>
+                                                                        </td>
+                                                                        <!--plus button to add -->
+                                                                        <td class="addcount" style="width:20px; padding-right:0; padding-left:0; vertical-align:middle;">
+                                                                            <form class="add">
+                                                                                <%if(counter-1!==0){%>
+                                                                                    <input class="orderId" value="<%=data.productInfo[i]._id%>" hidden><button style="background-color:transparent;border:none; outline:0"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                                                                    <%}%>
+                                                                            </form>
+                                                                        </td>
+                                                                        <td class="amountTd" style="width:20px; padding-right:0; padding-left:0">
+                                                                            <input type="text" style="background-color:transparent; border:none;text-align:center; max-width:30px" value="<%=count%>" readonly>
+                                                                        </td>
+                                                                        <!--minus button to minus -->
+                                                                        <td class="minuscount" style="width:20px; padding-right:0; padding-left:0; vertical-align:middle;">
+                                                                            <form class="minus">
+                                                                                <%if(counter-1!==0){%>
+                                                                                    <input class="orderId" value="<%=data.productInfo[i]._id%>" hidden><button style="background-color:transparent;border:none;outline:0"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                                                                    <%}%>
+                                                                            </form>
+                                                                        </td>
+                                                                        <%var count=1%>
+                                                                    </tr>
+                                                                    <%}else{%>
+                                                                        <%count++;%>
+                                                                            <%}%>
+                                                                                <%}%>
+                                                                                    <%});%>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <a class="btn btn-warning" href="/products">لیست کالا ها</a>
+            <%if(data[0]){%>
+                <a class="btn btn-success" href="/myinvoice/<%=data[0]._id%>">تکمیل مرحله سفارش</a>
+                <%}%>
+        </div>
+        <hr>
+        <div style="position:relative;width:100%; bottom:0; background-color:black; height:200px; text-align:center">
+            <h5 style="padding-top:20px"> سیستم فروش آنلاین شرکت تندیس برای مدتی به صورت آزمایشی فعال شده</h5>
+            <h6>لطفا مشکلات احتمالی را به ایمیل info@tandis.com ارسال نمایید با تشکر.</h6>
+        </div>
+        <% include ./partials/footer %>

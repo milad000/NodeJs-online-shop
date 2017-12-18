@@ -1,0 +1,66 @@
+<% include ./partials/header %>
+<% include ./partials/navbar %>
+
+    <div class="container">
+        <div class="row" style="position:relative; top:75px">
+            <span style="padding:10px;" id="pdate1"></span>
+
+            <div class="col-xs-12">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr class="bg-primary">
+                                <td></td>
+                                <td>کد کالا</td>
+                                <td>نام کالا</td>
+                                <td>تصویر کالا</td>
+                                <td>قیمت<br>(ریال)</td>
+                            </tr>
+                        </thead>
+                        <!--
+    productNo: Number,
+    productName: String,
+    productDes:String,
+    productPrice:Number,
+-->
+                        <tbody>
+                            <%data.forEach(function(data){%>
+                                <%if (data.productNo!==1000){%>
+                                    <tr>
+                                        <td style="vertical-align:middle"><a href="/product/<%=data._id%>"><i class="fa fa-check-circle" aria-hidden="true"></i></a></td>
+
+
+                                        <td style="vertical-align:middle" class="persianumber">
+                                            <%=data.productNo%>
+                                        </td>
+                                        <td class="persianumber">
+
+                                            <p style="display:block">
+                                                <%=data.productName%>
+                                            </p>
+                                            <p style="display:block">
+                                                <%=data.productDes%>
+                                            </p>
+                                        </td>
+                                        <td>
+                                            <img src="<%=data.productImg%>" style="max-height:30px; ">
+
+                                        </td>
+                                        <td style="vertical-align:middle; " class="persianumber">
+                                            <%=data.productPrice%>
+                                        </td>
+                                    </tr>
+                                    <%}%>
+                                        <%});%>
+                        </tbody>
+                    </table>
+                </div>
+                <hr>
+                <a href="/product/new" class="form-control btn btn-success d-inline" style="margin-bottom:5px;" role="button">جدید</a>
+                <a href="/invoice" class="form-control btn btn-info" style="margin-bottom:5px;" role="button">فاکتورها</a>
+                <a href="/customer" class="form-control btn btn-primary" style="margin-bottom:5px;" role="button">مشتریان</a>
+            </div>
+        </div>
+
+    </div>
+    <% include ./partials/footer %>

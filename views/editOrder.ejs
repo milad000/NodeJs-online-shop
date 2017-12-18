@@ -1,0 +1,153 @@
+<% include ./partials/header %>
+
+    <!-- HELP DATA
+
+-->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+                <a class="navbar-brand" href="#"><img src="/logo.png" style="height:25px"></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">محصولات <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#">درباره ما</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/authenticate">ورود</a></li>
+                    <li><a href="/authenticate/new">ثبت نام</a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-10">
+                <form class="form-group" action="/order/<%=data._id%>?_method=PUT" method="POST">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr class="bg-success">
+                                    <td>تعداد</td>
+                                    <td>نام محصول</td>
+                                    <td>قیمت</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!--                                1================================-->
+                                <tr>
+                                    <td>
+                                        <input class="" style="border: none; background-color:transparent" type="text" name="data[productInfo.orderQty]" placeholder="1تعداد" tabindex="1">
+                                    </td>
+                                    <td>
+                                        <input class="" style="border: none; background-color:transparent" type="text" name="data[productInfo.product]" value="<%=data1[0].productName%>" readonly>
+                                    </td>
+                                    <td class="persianumber">
+                                        <input style="border: none; background-color:transparent" type="text" name="data[productInfo.price]" value="<%=data1[0].productPrice%> " readonly>
+                                    </td>
+                                </tr>
+                                <!--                                2===============================-->
+                                <tr>
+                                    <td>
+                                        <input class="" style="border: none; background-color:transparent" type="text" name="data[productInfo1.orderQty]" placeholder="2تعداد" tabindex="2">
+                                    </td>
+                                    <td>
+                                        <input class="" style="border: none; background-color:transparent" type="text" name="data[productInfo1.product]" value="<%=data1[1].productName%>" readonly>
+                                    </td>
+                                    <td>
+                                        <input class="" style="border: none; background-color:transparent" type="text" name="data[productInfo1.price]" value="<%=data1[1].productPrice%>" readonly>
+                                    </td>
+                                </tr>
+                                <!--                                3===============================-->
+                                <tr>
+                                    <td>
+                                        <input class="" style="border: none; background-color:transparent" type="text" name="data[productInfo2.orderQty]" placeholder="3تعداد" tabindex="3">
+                                    </td>
+                                    <td>
+                                        <input class="" style="border: none; background-color:transparent" type="text" name="data[productInfo2.product]" value="<%=data1[2].productName%>" readonly>
+                                    </td>
+                                    <td>
+                                        <input class="" style="border: none; background-color:transparent" type="text" name="data[productInfo2.price]" value="<%=data1[2].productPrice%>" readonly>
+                                    </td>
+                                </tr>
+                                <!--                                4===============================-->
+
+                                <tr>
+                                    <td>
+                                        <input class="" style="border: none; background-color:transparent" type="text" name="data[productInfo3.orderQty]" placeholder="4تعداد" tabindex="3">
+                                    </td>
+                                    <td>
+                                        <input class="" style="border: none; background-color:transparent" type="text" name="data[productInfo3.product]" value="<%=data1[3].productName%>" readonly>
+                                    </td>
+                                    <td>
+                                        <input class="" style="border: none; background-color:transparent" style="outline: none;" type="text" name="data[productInfo3.price]" value="<%=data1[3].productPrice%>" readonly>
+                                    </td>
+                                </tr>
+                                <!--                                5===============================-->
+                                <tr>
+                                    <td>
+                                        <input class="" style="border: none; background-color:transparent" type="text" name="data[productInfo4.orderQty]" placeholder="5تعداد" tabindex="4">
+                                    </td>
+                                    <td>
+                                        <input class="" style="border: none; background-color:transparent" type="text" name="data[productInfo4.product]" value="<%=data1[4].productName%>" readonly>
+                                    </td>
+                                    <td>
+                                        <input class="" style="border: none; background-color:transparent" type="text" name="data[productInfo4.price]" value="<%=data1[4].productPrice%>">
+                                    </td>
+                                </tr>
+                                <!--                                6===============================-->
+                                <tr>
+                                    <td>
+                                        <input class="" style="border: none; background-color:transparent" type="text" name="data[productInfo5.orderQty]" placeholder="6تعداد" tabindex="5">
+                                    </td>
+                                    <td>
+                                        <input class="" style="border: none; background-color:transparent" type="text" name="data[productInfo5.product]" value="<%=data1[5].productName%>" readonly>
+                                    </td>
+                                    <td>
+                                        <input class="" style="border: none; background-color:transparent" type="text" name="data[productInfo5.price]" value="<%=data1[5].productPrice%>">
+                                    </td>
+                                </tr>
+                                <!--                                7===============================-->
+                                <tr>
+                                    <td>
+                                        <input class="" style="border: none; background-color:transparent" style="outline: none;" type="text" name="data[productInfo6.orderQty]" placeholder="7تعداد" tabindex="6">
+                                    </td>
+                                    <td>
+                                        <input class="" style="border: none; background-color:transparent" style="outline: none;" type="text" name="data[productInfo6.product]" value="<%=data1[6].productName%> " readonly>
+                                    </td>
+                                    <td>
+                                        <input class="" style="border: none; background-color:transparent" style="border: none;" type="text" name="data[productInfo6.price]" value="<%=data1[6].productPrice%>">
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot class="tfoot-default">
+                                <tr style="border: none;">
+                                    <td style="border: none;">
+                                        <input class="btn btn-success" type="submit">
+                                        <a class="btn btn-warning" href="/customer" role="button">فهرست اصلی</a>
+
+                                    </td>
+                                </tr>
+                            </tfoot>
+
+
+                        </table>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <% include ./partials/footer %>

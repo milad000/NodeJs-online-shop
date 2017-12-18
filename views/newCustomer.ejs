@@ -1,0 +1,18 @@
+<% include ./partials/header %>
+<% include ./partials/navbar %>
+
+    <div class="container" style="position:relative; top:100px">
+        <div class="row">
+            <div class="col-xs-12">
+                <form action="/register" method="post" class="form-group">
+                    <input class="form-control" style="margin-bottom:5px" type="text" name="username" placeholder="لطفا شماره تلفن همراه خود را وارد نمایید ...">
+                    <input class="form-control" style="margin-bottom:5px" type="hidden" name="password" placeholder="رمز عبور" value="<%=Math.floor((Math.random() * 100000) + 10000).toString();%>" readonly>
+                    <input class="form-control btn btn-success" type="submit">
+                </form>
+                <hr>
+                <p><span>قبلاٌ در سایت تندیس ثبت نام کرده اید؟ </span><a href="/login">ورود به سفارش آنلاین بستنی تندیس</a></p>
+
+            </div>
+        </div>
+    </div>
+    <% include ./partials/footer %>

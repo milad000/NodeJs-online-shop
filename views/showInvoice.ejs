@@ -1,0 +1,498 @@
+<% include ./partials/header %>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+                <a class="navbar-brand" href="#"><img src="/logo.png" style="height:25px"></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">محصولات <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#">درباره ما</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/authenticate">ورود</a></li>
+                    <li><a href="/authenticate/new">ثبت نام</a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <div class="container">
+        <div class="row">
+            <span style="padding:10px;" id="pdate1"></span>
+
+            <div class="col-xs-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr class="bg-primary">
+                            <td>تاریخ فاکتور</td>
+                            <td>شماره فاکتور</td>
+                            <td>نام مشتری</td>
+                            <td>تلفن مشتری</td>
+
+                        </tr>
+                    </thead>
+
+                    <!-- HELP DATA
+
+    customerNo: Number,
+    customerName:String,
+    customerAdd:String,
+    customerPhone:String,
+    created:{type:Date,default:Date.now},
+-->
+                    <!-- HELP DATA
+orderInfo:[],
+invoiceDate:String,
+customerInfo:[]
+-->
+
+
+                    <tbody>
+                        <tr>
+
+                            <td>
+                                <%=data.date%>
+                            </td>
+                            <td>
+                                <%=data.invoiceNo%>
+                            </td>
+                            <td>
+                                <%=data.customerName%>
+                            </td>
+                            <td>
+                                <%=data.customerPhone%>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> آدرس مشتری :</td>
+                            <td colspan="4">
+                                <%=data.customerAdd%>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td> آدرس ارسال کالا :</td>
+                            <td colspan="4">
+                                <%=data.orderAdd%>
+                            </td>
+                        </tr>
+                        <tr>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-xs-10">
+                                        <table class="table table-bordered" style="border:none">
+                                            <thead class="bg-warning">
+                                                <td>
+                                                    ردیف
+                                                </td>
+                                                <td>
+                                                    شرح محصول
+                                                </td>
+                                                <td>
+                                                    تعداد
+                                                </td>
+                                                <td>
+                                                    فی
+                                                </td>
+                                                <td>
+                                                    جمع
+                                                </td>
+                                            </thead>
+                                            <tbody>
+                                                <%if(data){%>
+                                                    <tr>
+                                                        <%if(data.counter1){%>
+                                                            <td>
+                                                                <%=data.counter1%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.productName1%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.amount1%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.productPrice1%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.subPrice1%>
+                                                            </td>
+                                                            <%}%>
+                                                    </tr>
+                                                    <tr>
+                                                        <%if(data.counter2){%>
+                                                            <td>
+                                                                <%=data.counter2%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.productName2%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.amount2%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.productPrice2%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.subPrice2%>
+                                                            </td>
+                                                            <%}%>
+                                                    </tr>
+                                                    <tr>
+                                                        <%if(data.counter3){%>
+                                                            <td>
+                                                                <%=data.counter3%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.productName3%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.amount3%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.productPrice3%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.subPrice3%>
+                                                            </td>
+                                                            <%}%>
+                                                    </tr>
+                                                    <tr>
+                                                        <%if(data.counter4){%>
+                                                            <td>
+                                                                <%=data.counter4%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.productName4%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.amount4%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.productPrice4%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.subPrice4%>
+                                                            </td>
+                                                            <%}%>
+                                                    </tr>
+                                                    <tr>
+                                                        <%if(data.counter5){%>
+                                                            <td>
+                                                                <%=data.counter5%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.productName5%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.amount5%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.productPrice5%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.subPrice5%>
+                                                            </td>
+                                                            <%}%>
+                                                    </tr>
+                                                    <tr>
+                                                        <%if(data.counter6){%>
+                                                            <td>
+                                                                <%=data.counter6%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.productName6%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.amount6%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.productPrice6%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.subPrice6%>
+                                                            </td>
+                                                            <%}%>
+                                                    </tr>
+                                                    <tr>
+                                                        <%if(data.counter7){%>
+                                                            <td>
+                                                                <%=data.counter7%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.productName7%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.amount7%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.productPrice7%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.subPrice7%>
+                                                            </td>
+                                                            <%}%>
+                                                    </tr>
+                                                    <tr>
+                                                        <%if(data.counter8){%>
+                                                            <td>
+                                                                <%=data.counter8%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.productName8%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.amount8%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.productPrice8%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.subPrice8%>
+                                                            </td>
+                                                            <%}%>
+                                                    </tr>
+                                                    <tr>
+                                                        <%if(data.counter9){%>
+                                                            <td>
+                                                                <%=data.counter9%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.productName9%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.amount9%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.productPrice9%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.subPrice9%>
+                                                            </td>
+                                                            <%}%>
+                                                    </tr>
+                                                    <tr>
+                                                        <%if(data.counter10){%>
+                                                            <td>
+                                                                <%=data.counter10%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.productName10%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.amount10%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.productPrice10%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.subPrice10%>
+                                                            </td>
+                                                            <%}%>
+                                                    </tr>
+                                                    <tr>
+                                                        <%if(data.counter11){%>
+                                                            <td>
+                                                                <%=data.counter11%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.productName11%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.amount11%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.productPrice11%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.subPrice11%>
+                                                            </td>
+                                                            <%}%>
+                                                    </tr>
+                                                    <tr>
+                                                        <%if(data.counter12){%>
+                                                            <td>
+                                                                <%=data.counter12%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.productName12%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.amount12%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.productPrice12%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.subPrice12%>
+                                                            </td>
+                                                            <%}%>
+                                                    </tr>
+                                                    <tr>
+                                                        <%if(data.counter13){%>
+                                                            <td>
+                                                                <%=data.counter13%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.productName13%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.amount13%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.productPrice13%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.subPrice13%>
+                                                            </td>
+                                                            <%}%>
+                                                    </tr>
+                                                    <tr>
+                                                        <%if(data.counter14){%>
+                                                            <td>
+                                                                <%=data.counter14%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.productName14%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.amount14%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.productPrice14%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.subPrice14%>
+                                                            </td>
+                                                            <%}%>
+                                                    </tr>
+                                                    <tr>
+                                                        <%if(data.counter15){%>
+                                                            <td>
+                                                                <%=data.counter15%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.productName15%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.amount15%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.productPrice15%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.subPrice15%>
+                                                            </td>
+                                                            <%}%>
+                                                    </tr>
+                                                    <tr>
+                                                        <%if(data.counter16){%>
+                                                            <td>
+                                                                <%=data.counter16%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.productName16%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.amount16%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.productPrice16%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.subPrice16%>
+                                                            </td>
+                                                            <%}%>
+                                                    </tr>
+                                                    <tr>
+                                                        <%if(data.counter17){%>
+                                                            <td>
+                                                                <%=data.counter17%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.productName17%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.amount17%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.productPrice17%>
+                                                            </td>
+                                                            <td>
+                                                                <%=data.subPrice17%>
+                                                            </td>
+                                                            <%}%>
+                                                    </tr>
+                                                    <%}%>
+
+                                            </tbody>
+                                            <tfoot style="border:none">
+                                                <tr style="border:none">
+                                                    <td style="border:none; "></td>
+                                                    <td style="border:none; "></td>
+                                                    <td style="border:none; "></td>
+                                                    <td style="text-align:left">جمع کل</td>
+                                                    <td>
+                                                        <%=data.total%>
+                                                    </td>
+                                                </tr>
+                                                <tr style="border:none">
+                                                    <td style="border:none; "></td>
+                                                    <td style="border:none; "></td>
+                                                    <td style="border:none; "></td>
+                                                    <td style="text-align:left">ارزش افزوده</td>
+                                                    <td>
+                                                        <%=data.vat%>
+                                                    </td>
+                                                </tr>
+                                                <tr style="border:none">
+                                                    <td style="border:none; "></td>
+                                                    <td style="border:none; "></td>
+                                                    <td style="border:none; "></td>
+                                                    <td style="text-align:left">خالص پرداختی</td>
+                                                    <td>
+                                                        <%=data.toPay%>
+                                                    </td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </tr>
+                    </tbody>
+                </table>
+                <hr>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <form style="float:right" action="/invoice/<%=data._id%>?_method=DELETE" method="POST">
+                                <button class="btn btn-default">حذف</button>
+                            </form>
+
+                            <form style="float:right" action="/invoice/<%=data._id%>/edit">
+                                <button class="btn btn-default">تغییر</button>
+                            </form>
+
+                            <form style="float:right" action="/invoice">
+                                <button class="btn btn-default"><i class="fa fa-reply-all" aria-hidden="true"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </div>
+    <% include ./partials/footer %>

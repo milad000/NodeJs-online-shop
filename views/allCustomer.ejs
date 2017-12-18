@@ -1,0 +1,101 @@
+<% include ./partials/header %>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+                <a class="navbar-brand" href="#"><img src="/logo.png" style="height:25px"></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/product">محصولات <span class="sr-only">(current)</span></a></li>
+                    <li><a href="">درباره ما</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/login">ورود</a></li>
+                    <li><a href="/register">ثبت نام</a></li>
+                    <li><a href="/logout">خروج</a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="table-responsive">
+
+                <div class="col-xs-12">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr class="bg-primary">
+                                <td>انتخاب</td>
+                                <td>شماره مشتری</td>
+                                <td>نام عبور</td>
+                                <td>نام مشتری</td>
+                                <td>آدرس مشتری</td>
+                                <td>تلفن مشتری</td>
+                            </tr>
+                        </thead>
+                        <!-- HELP DATA
+customerNo: Number,
+customerName:String,
+customerAdd:String,
+customerPhone:String,
+created:{type:Date,default:Date.now},
+-->
+                        <tbody>
+                            <%data.forEach(function(data){%>
+                                <%if (data.customerNo!==1000){%>
+                                    <tr>
+                                        <td><a href="/customer/<%=data._id%>"><i class="fa fa-check-circle" aria-hidden="true"></i></a></td>
+                                        <td class="persianumber">
+                                            <%=data.customerNo%>
+                                        </td>
+                                        <td>
+                                            <%=data.username%>
+                                        </td>
+                                        <td>
+                                            <%=data.customerName%>
+                                        </td>
+                                        <td>
+                                            <%=data.customerAdd%>
+                                        </td>
+                                        <td class="persianumber">
+                                            <%=data.customerPhone%>
+                                        </td>
+
+                                    </tr>
+                                    <%}%>
+                                        <%});%>
+                        </tbody>
+
+                        <tfoot>
+                            <tr>
+                                <td colspan="6">
+                                    <p>پایان</p>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+        <a href="/customer/new" class="form-control btn btn-success" style="margin-bottom:5px;" role="button">جدید</a>
+        <a href="/invoice" class="form-control btn btn-info" style="margin-bottom:5px;" role="button">فاکتورها</a>
+        <a href="/product" class="form-control btn btn-primary" style="margin-bottom:5px;" role="button">کالاها</a>
+        <hr>
+
+    </div>
+
+
+    <% include ./partials/footer %>
